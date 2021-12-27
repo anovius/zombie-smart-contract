@@ -30,6 +30,7 @@ contract ZombieFactory {
     }
 
     function createRandomZombie(string memory _name) public {
+        require(ownerZombieCount[msg.sender] == 0); // check count if 0 then execute else error
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
